@@ -1,6 +1,4 @@
-FROM php:7.1-fpm
-
-MAINTAINER Dinh Tai
+FROM php:7.2-fpm
 
 ENV TERM xterm
 
@@ -13,14 +11,13 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libssl-dev \
     libmcrypt-dev \
-    vim \
     zlib1g-dev libicu-dev g++ \
     --no-install-recommends \
     && rm -r /var/lib/apt/lists/*
 
 # configure gd library
 RUN docker-php-ext-configure gd \
-    --enable-gd-native-ttf \
+    # --enable-gd-native-ttf \
     --with-jpeg-dir=/usr/lib \
     --with-freetype-dir=/usr/include/freetype2
 
@@ -34,7 +31,6 @@ RUN pecl install mongodb \
 
 # Install extensions using the helper script provided by the base image
 RUN docker-php-ext-install \
-    mcrypt \
     bcmath \
     pdo_mysql \
     pdo_pgsql \
