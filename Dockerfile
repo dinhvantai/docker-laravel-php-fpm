@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     curl \
     libjpeg-dev \
-    libpng12-dev \
+    libpng-dev \
     libfreetype6-dev \
     libssl-dev \
     libmcrypt-dev \
